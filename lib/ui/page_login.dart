@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_ui_collections/ui/page_webview.dart';
 import 'package:flutter_ui_collections/utils/colors.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
@@ -278,7 +279,9 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(height: size.getWidthPx(8)),
                 _passwordWidget(),
                 GestureDetector(
-                    onTap: ()  => launch('https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'),
+                    onTap: ()  => Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'))),
                     child: Padding(
                       padding: EdgeInsets.only(right: size.getWidthPx(24)),
                       child: Align(
@@ -307,7 +310,9 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(fontFamily: 'Exo2',color: Colors.white, fontSize: 18.0),
                   ),
                   color: colorCurveSecondary,
-                  onPressed: () => launch('https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'),
+                  onPressed: () => Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'))),
                 )),
 
               ],

@@ -7,6 +7,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/ui/page_attachments.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
+import 'package:flutter_ui_collections/ui/page_webview.dart';
 import 'package:http/http.dart' as http;
 
 import 'package:flutter_ui_collections/utils/utils.dart';
@@ -18,6 +19,7 @@ import 'page_home.dart';
 import 'page_attachments.dart';
 import 'page_fault.dart';
 import 'page_control.dart';
+import 'page_webview.dart';
 import 'flutter_notifications.dart';
 
 Future<Object> getObject(http.Client client, int cid) async {
@@ -390,7 +392,10 @@ class ObjectInstance extends StatelessWidget {
               fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
         ),
         color: colorCurveSecondary,
-        onPressed: () => launch('https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component')
+       onPressed: () => Navigator.pushReplacement(
+         context,
+         MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component')),
+       )
       ),
     );
   }

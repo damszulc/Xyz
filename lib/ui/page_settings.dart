@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
+import 'package:flutter_ui_collections/ui/page_webview.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:flutter_ui_collections/widgets/widgets.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
@@ -92,15 +93,19 @@ class _SettingPageState extends State<SettingPage> {
           child: TileRow(
             label: "Kontakt",
             disableDivider: false,
-              onTap: () => launch('https://wkob.pl/index.php/kontakt?tmpl=component')
+              onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/kontakt?tmpl=component')))
           ),
         ),
         Container(
           child: TileRow(
             label: "Regulamin",
             disableDivider: false,
-            onTap: () => launch('https://wkob.pl/index.php/regulamin?tmpl=component')
-              ,
+            onTap: () => Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/regulamin?tmpl=component')))
+                          ,
           ),
         ),
         Container(
