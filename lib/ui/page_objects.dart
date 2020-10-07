@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'dart:typed_data';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -8,13 +7,10 @@ import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 import 'package:flutter_ui_collections/ui/page_view.dart';
 import 'package:http/http.dart' as http;
-import 'package:intl/intl.dart';
 
 import 'package:flutter_ui_collections/utils/utils.dart';
 
 import '../LocalBindings.dart';
-import 'flutter_notifications.dart';
-import 'page_single.dart';
 import 'page_view.dart';
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {

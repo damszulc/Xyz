@@ -377,6 +377,7 @@ class ObjectInstance extends StatelessWidget {
   }
 
   Container buttonWidget(context, object, parent_id) {
+    print('https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component');
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: size.getWidthPx(0), horizontal: size.getWidthPx(12)),
@@ -392,10 +393,12 @@ class ObjectInstance extends StatelessWidget {
               fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
         ),
         color: colorCurveSecondary,
-       onPressed: () => Navigator.pushReplacement(
+       onPressed: () {
+          String url = 'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component';
+          Navigator.pushReplacement(
          context,
-         MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component')),
-       )
+         MaterialPageRoute(builder: (context) => PageWebview(url)),
+       );}
       ),
     );
   }

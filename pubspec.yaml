@@ -1,5 +1,5 @@
 name: flutter_ui_collections
-description: Aplikacja mobilna WKOB.
+description: Aplikacja mobilna eKOB.
 
 # The following defines the version and build number for your application.
 # A version number is three numbers separated by dots, like 1.2.43
@@ -11,7 +11,7 @@ description: Aplikacja mobilna WKOB.
 # In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
 # Read more about iOS versioning at
 # https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
-version: 1.4.9
+version: 1.4.13
 
 environment:
   sdk: ">=2.3.0 <3.0.0"
@@ -35,6 +35,7 @@ dependencies:
   rxdart: ^0.23.1
   flutter_launcher_icons: "^0.6.1"
   flutter_webview_plugin:
+  flutter_inappwebview:
   flutter_local_notifications: ^1.4.4+4
 
 dev_dependencies:

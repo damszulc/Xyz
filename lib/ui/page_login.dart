@@ -151,9 +151,10 @@ class _LoginPageState extends State<LoginPage> {
                     child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
+                          SizedBox(height: size.getWidthPx(45)),
                             appLogo,
                    //       _loginGradientText(),
-                          SizedBox(height: size.getWidthPx(30)),
+                          SizedBox(height: size.getWidthPx(45)),
                           loginFields()
                         ]),
                   ),
@@ -165,9 +166,10 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Center appLogo = new Center(
-    child: Image(
-      image: new NetworkImage("https://wkob.pl/images/logo.png"),
-      alignment: FractionalOffset.center));
+    child: Container(
+      width: 200,
+      height: 60,
+  child: Image.asset("assets/EKOB-3.png")));
 
   RichText _textAccount() {
     return RichText(
