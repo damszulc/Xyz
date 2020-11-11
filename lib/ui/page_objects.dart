@@ -61,7 +61,7 @@ class ObjectsPage extends StatefulWidget {
 
 class _SearchPageState extends State<ObjectsPage> {
 
-  String registrationDesc;
+  String registrationDesc = '';
 
   @override
   void initState() {
