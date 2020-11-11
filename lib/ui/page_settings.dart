@@ -68,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text('wersja: 1.4.13', textAlign: TextAlign.center,)),
+                  child: Text('wersja: 1.4.14', textAlign: TextAlign.center,)),
                 accountSection(),
                 pushNotificationSection(),
                 pushCalendarSection(),

@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
@@ -60,9 +61,12 @@ class ObjectsPage extends StatefulWidget {
 
 class _SearchPageState extends State<ObjectsPage> {
 
+  String registrationDesc;
+
   @override
   void initState() {
     navigate();
+    this._getRegistrationDesc();
     super.initState();
   }
 
@@ -88,6 +92,9 @@ class _SearchPageState extends State<ObjectsPage> {
         future: fetchPhotos(http.Client()),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
+          if(!snapshot.hasData) {
+            return Container(child: Text(registrationDesc), alignment: Alignment.topCenter, padding: EdgeInsets.all(25));
+          }
 
           return snapshot.hasData
               ? PhotosList(photos: snapshot.data)
@@ -95,6 +102,14 @@ class _SearchPageState extends State<ObjectsPage> {
         },
       ),
     );
+  }
+
+  _getRegistrationDesc() async {
+    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_registration_desc&format=raw").then((result) {
+      registrationDesc = result.body.toString();
+      setState(() {
+      });
+    });
   }
 
   Future navigate () async {
