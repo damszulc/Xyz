@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:flutter_ui_collections/LocalBindings.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 import 'package:flutter_ui_collections/ui/page_responsible.dart';
@@ -15,7 +14,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import 'page_single.dart';
-import 'page_responsible.dart';
+import 'package:intl/intl.dart';
 
 class PageControl extends StatefulWidget {
   @override
@@ -124,17 +123,7 @@ class _PageControlState extends State<PageControl> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
-                   /* DatePicker.showDatePicker(context,
-                        theme: DatePickerTheme(
-                          containerHeight: 210.0,
-                        ),
-                        showTitleActions: true,
-                        minTime: DateTime.now(), onConfirm: (date) {
-                          print('confirm $date');
-                          _date = '${date.day}.${date.month}.${date.year}';
-                          setState(() {});
-                        },
-                        currentTime: DateTime.now(), locale: LocaleType.pl);*/
+                   _selectDate(context);
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -204,6 +193,21 @@ class _PageControlState extends State<PageControl> {
             ),
           )),
     );
+  }
+
+  DateTime selectedDate = DateTime.now();
+  _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+        context: context,
+        initialDate: selectedDate, // Refer step 1
+        firstDate: DateTime(2000),
+        lastDate: DateTime(2025)
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+        _date = DateFormat('dd.MM.yyyy').format(selectedDate).toString();
+      });
   }
 
   TextField _emailWidget() {

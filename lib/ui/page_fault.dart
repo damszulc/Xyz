@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 
 import 'package:flutter_ui_collections/utils/utils.dart';
@@ -11,6 +10,8 @@ import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+
+import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../LocalBindings.dart';
@@ -110,7 +111,7 @@ class _PageFaultState extends State<PageFault> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
-_selectDate(context);   /*
+                    _selectDate(context);   /*
                     DatePicker.showDatePicker(
                       context,
                       minDateTime: DateTime.now(),
@@ -209,20 +210,20 @@ _selectDate(context);   /*
           ))),
     );
   }
-DateTime selectedDate = DateTime.now();
+  DateTime selectedDate = DateTime.now();
 
   _selectDate(BuildContext context) async {
     final DateTime picked = await showDatePicker(
       context: context,
       initialDate: selectedDate, // Refer step 1
       firstDate: DateTime(2000),
-      lastDate: DateTime(2025),
+      lastDate: DateTime(2025)
     );
     if (picked != null && picked != selectedDate)
       setState(() {
         selectedDate = picked;
-        _date = selectedDate.toString();
-      });
+        _remove_date = DateFormat('dd.MM.yyyy').format(selectedDate).toString();
+    });
   }
 
   getFault() {

@@ -1,12 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_ui_collections/ui/page_splash.dart';
-import 'ui/page_home.dart';
-import 'ui/page_login.dart';
-import 'ui/page_onboarding.dart';
-import 'ui/page_settings.dart';
-import 'utils/utils.dart';
-import 'widgets/carousol.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 void main() {
 
 
@@ -17,6 +11,15 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en'),
+        const Locale('pl', 'PL')
+      ],
+      locale: const Locale('pl', 'PL'),
       title: 'Flutter UI Collections',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

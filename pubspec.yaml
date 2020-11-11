@@ -20,6 +20,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_localizations:
+    sdk: flutter
+  intl:
   image_picker:
   cupertino_icons: ^0.1.3
   flutter_staggered_grid_view:
@@ -35,7 +38,6 @@ dependencies:
   flutter_launcher_icons: "^0.6.1"
   flutter_webview_plugin:
   flutter_local_notifications: ^1.4.4+4
-  flutter_android_lifecycle:
 
 dev_dependencies:
   flutter_driver:
