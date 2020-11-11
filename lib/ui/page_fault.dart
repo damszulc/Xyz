@@ -110,6 +110,7 @@ class _PageFaultState extends State<PageFault> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
+_selectDate(context);   /*
                     DatePicker.showDatePicker(
                       context,
                       minDateTime: DateTime.now(),
@@ -121,7 +122,7 @@ class _PageFaultState extends State<PageFault> {
                         _remove_date = '${date.day}.${date.month}.${date.year}';
                         setState(() {});
                       },
-                    );
+                    );*/
                    /* DatePicker.showDatePicker(context,
                         theme: DatePickerTheme(
                           containerHeight: 210.0,
@@ -207,6 +208,21 @@ class _PageFaultState extends State<PageFault> {
             ),
           ))),
     );
+  }
+DateTime selectedDate = DateTime.now();
+
+  _selectDate(BuildContext context) async {
+    final DateTime picked = await showDatePicker(
+      context: context,
+      initialDate: selectedDate, // Refer step 1
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2025),
+    );
+    if (picked != null && picked != selectedDate)
+      setState(() {
+        selectedDate = picked;
+        _date = selectedDate.toString();
+      });
   }
 
   getFault() {
