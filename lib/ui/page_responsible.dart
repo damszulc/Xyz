@@ -279,7 +279,7 @@ class _PageResponsibleState extends State<PageResponsible> {
   upload(String fileName) {
     if(base64Image != null) {
       http.post(
-          "http://wkob.srv28629.microhost.com.pl/test.php",
+          "https://wkob.srv28629.microhost.com.pl/test.php",
           body: {
             "image": base64Image,
             "name": fileName,

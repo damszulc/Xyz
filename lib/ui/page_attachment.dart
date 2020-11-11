@@ -192,7 +192,7 @@ class _PageAttachmentState extends State<PageAttachment> {
   }
 
   upload(String fileName) {
-    http.post("http://wkob.srv28629.microhost.com.pl/test.php", body: {
+    http.post("https://wkob.srv28629.microhost.com.pl/test.php", body: {
       "image": base64Image,
       "name": fileName,
     }).then((result) {

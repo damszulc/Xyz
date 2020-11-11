@@ -573,7 +573,7 @@ class AttachmentsList extends StatelessWidget {
 
   InkWell propertyCard(BuildContext context, Attachment property) {
     return InkWell(
-        onTap: (){ launch('http://wkob.srv28629.microhost.com.pl/uploads/'+property.link); },
+        onTap: (){ launch('https://wkob.srv28629.microhost.com.pl/uploads/'+property.link); },
         child: Card(
             elevation: 4.0,
             margin: EdgeInsets.all(8),
@@ -967,9 +967,9 @@ class PhotosList extends StatelessWidget {
       child: Container(
           width: size.getWidthPx(170),
           child: InkWell(
-              onTap: (){ launch('http://wkob.srv28629.microhost.com.pl/uploads/'+ property.src); },
+              onTap: (){ launch('https://wkob.srv28629.microhost.com.pl/uploads/'+ property.src); },
               child: CachedNetworkImage(
-                imageUrl: 'http://wkob.srv28629.microhost.com.pl/uploads/thumbs/'+ property.src,
+                imageUrl: 'https://wkob.srv28629.microhost.com.pl/uploads/thumbs/'+ property.src,
                 placeholder: (context, url) => CircularProgressIndicator(),
                 errorWidget: (context, url, error) => Icon(Icons.error),
               ))
