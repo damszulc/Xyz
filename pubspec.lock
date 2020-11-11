@@ -63,7 +63,7 @@ packages:
       name: connectivity
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.4.9+3"
+    version: "2.0.1"
   connectivity_for_web:
     dependency: transitive
     description:
@@ -134,6 +134,13 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_android_lifecycle:
+    dependency: "direct main"
+    description:
+      name: flutter_android_lifecycle
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.0"
   flutter_cache_manager:
     dependency: transitive
     description:
