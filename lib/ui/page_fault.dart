@@ -38,12 +38,21 @@ class _PageFaultState extends State<PageFault> {
   String _remove_date;
 
   @override
+  void initState() {
+    getFault();
+    setState(() {
+
+    });
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
 
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text((stateValue=='Nowa'?"Dodaj usterkę":"Edytuj usterkę"),
+        title: Text((_titleFieldController.text==''?"Dodaj usterkę":"Edytuj usterkę"),
             style:
             TextStyle(fontFamily: "Exo2", color: backgroundColor)),
         leading: new Container(child: BackButton(
@@ -233,6 +242,7 @@ class _PageFaultState extends State<PageFault> {
         body: {
           "id": widget.fault_id
         }).then((result) {
+
       var resBody = json.decode(result.body);
       if(resBody['title'] != "") _titleFieldController.text = resBody['title'];
       if(resBody['description'] != "") _nameFieldController.text = resBody['description'];
@@ -478,7 +488,7 @@ class _PageFaultState extends State<PageFault> {
   upload(String fileName, String fault_id) {
     if (base64Image != null) {
       http.post(
-          "http://wkob.srv28629.microhost.com.pl/test.php",
+          "https://wkob.srv28629.microhost.com.pl/test.php",
           body: {
             "image": base64Image,
             "name": fileName,
@@ -514,7 +524,7 @@ class _PageFaultState extends State<PageFault> {
         );
       }
     }).catchError((error) {
-      setStatus(error);
+     // setStatus(error);
     });
   }
 
@@ -672,9 +682,9 @@ class PhotosList extends StatelessWidget {
       child: Container(
           width: size.getWidthPx(170),
           child: InkWell(
-              onTap: (){ launch('http://wkob.srv28629.microhost.com.pl/uploads/'+ property.src); },
+              onTap: (){ launch('https://wkob.srv28629.microhost.com.pl/uploads/'+ property.src); },
           child: CachedNetworkImage(
-            imageUrl: 'http://wkob.srv28629.microhost.com.pl/uploads/thumbs/'+ property.src,
+            imageUrl: 'https://wkob.srv28629.microhost.com.pl/uploads/thumbs/'+ property.src,
             placeholder: (context, url) => CircularProgressIndicator(),
             errorWidget: (context, url, error) => Icon(Icons.error),
           ),

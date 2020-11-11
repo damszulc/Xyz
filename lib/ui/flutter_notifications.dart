@@ -342,25 +342,6 @@ class _HomePageState extends State<NotificationsPage> {
                     },
                   ),
                   PaddedRaisedButton(
-                    buttonText: 'Show big picture notification [Android]',
-                    onPressed: () async {
-                      await _showBigPictureNotification();
-                    },
-                  ),
-                  PaddedRaisedButton(
-                    buttonText:
-                    'Show big picture notification, hide large icon on expand [Android]',
-                    onPressed: () async {
-                      await _showBigPictureNotificationHideExpandedLargeIcon();
-                    },
-                  ),
-                  PaddedRaisedButton(
-                    buttonText: 'Show media notification [Android]',
-                    onPressed: () async {
-                      await _showNotificationMediaStyle();
-                    },
-                  ),
-                  PaddedRaisedButton(
                     buttonText: 'Show big text notification [Android]',
                     onPressed: () async {
                       await _showBigTextNotification();
@@ -604,69 +585,6 @@ class _HomePageState extends State<NotificationsPage> {
     var file = File(filePath);
     await file.writeAsBytes(response.bodyBytes);
     return filePath;
-  }
-
-  Future<void> _showBigPictureNotification() async {
-    var largeIconPath = await _downloadAndSaveFile(
-        'http://via.placeholder.com/48x48', 'largeIcon');
-    var bigPicturePath = await _downloadAndSaveFile(
-        'http://via.placeholder.com/400x800', 'bigPicture');
-    var bigPictureStyleInformation = BigPictureStyleInformation(
-        FilePathAndroidBitmap(bigPicturePath),
-        largeIcon: FilePathAndroidBitmap(largeIconPath),
-        contentTitle: 'overridden <b>big</b> content title',
-        htmlFormatContentTitle: true,
-        summaryText: 'summary <i>text</i>',
-        htmlFormatSummaryText: true);
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'big text channel id',
-        'big text channel name',
-        'big text channel description',
-        styleInformation: bigPictureStyleInformation);
-    var platformChannelSpecifics =
-    NotificationDetails(androidPlatformChannelSpecifics, null);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'big text title', 'silent body', platformChannelSpecifics);
-  }
-
-  Future<void> _showBigPictureNotificationHideExpandedLargeIcon() async {
-    var largeIconPath = await _downloadAndSaveFile(
-        'http://via.placeholder.com/48x48', 'largeIcon');
-    var bigPicturePath = await _downloadAndSaveFile(
-        'http://via.placeholder.com/400x800', 'bigPicture');
-    var bigPictureStyleInformation = BigPictureStyleInformation(
-        FilePathAndroidBitmap(bigPicturePath),
-        hideExpandedLargeIcon: true,
-        contentTitle: 'overridden <b>big</b> content title',
-        htmlFormatContentTitle: true,
-        summaryText: 'summary <i>text</i>',
-        htmlFormatSummaryText: true);
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-        'big text channel id',
-        'big text channel name',
-        'big text channel description',
-        largeIcon: FilePathAndroidBitmap(largeIconPath),
-        styleInformation: bigPictureStyleInformation);
-    var platformChannelSpecifics =
-    NotificationDetails(androidPlatformChannelSpecifics, null);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'big text title', 'silent body', platformChannelSpecifics);
-  }
-
-  Future<void> _showNotificationMediaStyle() async {
-    var largeIconPath = await _downloadAndSaveFile(
-        'http://via.placeholder.com/128x128/00FF00/000000', 'largeIcon');
-    var androidPlatformChannelSpecifics = AndroidNotificationDetails(
-      'media channel id',
-      'media channel name',
-      'media channel description',
-      largeIcon: FilePathAndroidBitmap(largeIconPath),
-      styleInformation: MediaStyleInformation(),
-    );
-    var platformChannelSpecifics =
-    NotificationDetails(androidPlatformChannelSpecifics, null);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'notification title', 'notification body', platformChannelSpecifics);
   }
 
   Future<void> _showBigTextNotification() async {
