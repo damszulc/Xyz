@@ -141,13 +141,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.4.1"
-  flutter_datetime_picker:
+  flutter_cupertino_date_picker:
     dependency: "direct main"
     description:
-      name: flutter_datetime_picker
+      name: flutter_cupertino_date_picker
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.4.0"
+    version: "1.0.26+2"
   flutter_driver:
     dependency: "direct dev"
     description: flutter

@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:flutter_ui_collections/LocalBindings.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 import 'package:flutter_ui_collections/ui/page_responsible.dart';
@@ -124,7 +124,7 @@ class _PageControlState extends State<PageControl> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
-                    DatePicker.showDatePicker(context,
+                   /* DatePicker.showDatePicker(context,
                         theme: DatePickerTheme(
                           containerHeight: 210.0,
                         ),
@@ -134,7 +134,7 @@ class _PageControlState extends State<PageControl> {
                           _date = '${date.day}.${date.month}.${date.year}';
                           setState(() {});
                         },
-                        currentTime: DateTime.now(), locale: LocaleType.pl);
+                        currentTime: DateTime.now(), locale: LocaleType.pl);*/
                   },
                   child: Container(
                     alignment: Alignment.center,
@@ -222,7 +222,7 @@ class _PageControlState extends State<PageControl> {
   FlatButton _dateWidget() {
     return FlatButton(
         onPressed: () {
-          DatePicker.showDatePicker(context,
+         /* DatePicker.showDatePicker(context,
               showTitleActions: true,
               minTime: DateTime.now(),
               onChanged: (date) {
@@ -232,7 +232,7 @@ class _PageControlState extends State<PageControl> {
                 datetime = date.toString();
                 setState(() {});
               }, currentTime: DateTime.now(), locale: LocaleType.pl);
-        },
+       */ },
         child: Text(
           "Ustaw datę $datetime",
           style: TextStyle(color: Colors.blue),

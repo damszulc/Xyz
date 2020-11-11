@@ -3,7 +3,7 @@ import 'dart:async';
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:flutter_cupertino_date_picker/flutter_cupertino_date_picker.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 
 import 'package:flutter_ui_collections/utils/utils.dart';
@@ -110,7 +110,19 @@ class _PageFaultState extends State<PageFault> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
-                    DatePicker.showDatePicker(context,
+                    DatePicker.showDatePicker(
+                      context,
+                      minDateTime: DateTime.now(),
+                      initialDateTime: DateTime.now(),
+                      locale: DATETIME_PICKER_LOCALE_DEFAULT,
+                      pickerMode: DateTimePickerMode.date,
+                      pickerTheme: DateTimePickerTheme.Default,
+                      onConfirm: (date, List<int> index) {
+                        _remove_date = '${date.day}.${date.month}.${date.year}';
+                        setState(() {});
+                      },
+                    );
+                   /* DatePicker.showDatePicker(context,
                         theme: DatePickerTheme(
                           containerHeight: 210.0,
                         ),
@@ -120,7 +132,7 @@ class _PageFaultState extends State<PageFault> {
                           setState(() {});
                         },
                         currentTime: DateTime.now(), locale: LocaleType.pl);
-                  },
+                 */ },
                   child: Container(
                     alignment: Alignment.center,
                     height: 50.0,
