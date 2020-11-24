@@ -5,6 +5,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_ui_collections/main.dart';
 import 'package:flutter_ui_collections/ui/page_folder.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 import 'package:flutter_ui_collections/ui/page_single.dart';
@@ -83,7 +84,7 @@ class _PageComingSoonState extends State<PageAttachments> {
           centerTitle: true,
           title: Text("Załączniki obiektu",
               style:
-              TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+              TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
 
           backgroundColor: colorCurve,
           actions: <Widget>[
@@ -248,7 +249,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Dodaj folder",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurveSecondary,
         onPressed: () {
@@ -268,7 +269,7 @@ class ObjectInstance extends StatelessWidget {
           child: Text(
             "Dodaj załącznik",
             style: TextStyle(
-                fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+                fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
           ),
           color: colorCurveSecondary,
           onPressed: () {
@@ -294,7 +295,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Dodaj usterkę",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurve,
         onPressed: () {
@@ -566,7 +567,7 @@ class AttachmentsList extends StatelessWidget {
                     ClipRRect(
                         child:  new Image(image: AssetImage("assets/folder-blue.png"), height: size.getWidthPx(32))),
                     SizedBox(height: size.getWidthPx(5)),
-                    Center(child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center,)),
+                    Center(child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.04))),
                   ],
                 ))));
   }
@@ -592,7 +593,7 @@ class AttachmentsList extends StatelessWidget {
                         child: new Image(image: isImage(property.link), height: size.getWidthPx(32)))
                     ),
                     SizedBox(height: size.getWidthPx(5)),
-                    Center(child: Padding(padding: EdgeInsets.all(5.0), child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center,overflow: TextOverflow.ellipsis,))),
+                    Center(child: Padding(padding: EdgeInsets.all(5.0), child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center,overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: displayWidth(context) * 0.04)))),
                   ],
                 ))));
   }

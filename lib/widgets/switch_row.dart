@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:flutter_ui_collections/widgets/visibility.dart';
+import '../main.dart';
 
 class SwitchRow extends StatelessWidget {
   final String label;
@@ -53,7 +54,8 @@ class SwitchRow extends StatelessWidget {
                     child: Text(label,
                         style: TextStyle(
                             fontFamily: 'Exo2',
-                            fontSize: 14.0,
+                            fontWeight: FontWeight.w500,
+                            fontSize: displayWidth(context) * 0.033,
                             color: disabled
                                 ? disabledTextColour
                                 : labelColor ?? textPrimaryDarkColor)),

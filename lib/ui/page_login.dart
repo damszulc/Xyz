@@ -12,6 +12,7 @@ import 'package:http/http.dart' as http;
 import '../LocalBindings.dart';
 import 'page_home.dart';
 import 'page_signup.dart';
+import '../main.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -122,7 +123,7 @@ class _LoginPageState extends State<LoginPage> {
           centerTitle: true,
           title: Text("Logowanie",
               style:
-              TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+              TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
           backgroundColor: colorCurve,
         ),
         body: AnnotatedRegion(
@@ -210,6 +211,7 @@ class _LoginPageState extends State<LoginPage> {
         onSaved: (String val) {
           _email = val;
         },
+        style: TextStyle(fontSize: displayWidth(context) * 0.5),
         onFieldSubmitted: (String value) {
           FocusScope.of(context).requestFocus(_passFocusNode);
         },
@@ -244,7 +246,7 @@ class _LoginPageState extends State<LoginPage> {
         padding: EdgeInsets.all(size.getWidthPx(8)),
         child: Text(
           "Zaloguj się",
-          style: TextStyle(fontFamily: 'Exo2',color: Colors.white, fontSize: 18.0),
+          style: TextStyle(fontFamily: 'Exo2',color: Colors.white, fontSize: displayWidth(context) * 0.04),
         ),
         color: colorCurve,
         onPressed: () {
@@ -289,14 +291,14 @@ class _LoginPageState extends State<LoginPage> {
                       child: Align(
                           alignment: Alignment.centerRight,
                           child: Text("Zapomniałeś hasła?",
-                              style: TextStyle(fontFamily: 'Exo2',fontSize: 16.0))),
+                              style: TextStyle(fontFamily: 'Exo2',fontSize: displayWidth(context) * 0.033))),
                     )),
                 SizedBox(height: size.getWidthPx(8)),
                 _loginButtonWidget(),
                 SizedBox(height: size.getWidthPx(28)),
                 Center(
                           child: Text("Nie masz jeszcze konta?",
-                              style: TextStyle(fontFamily: 'Exo2',fontSize: 20.0)),
+                              style: TextStyle(fontFamily: 'Exo2',fontSize: displayWidth(context) * 0.045)),
                     ),
                 SizedBox(height: size.getWidthPx(10)),
                 Container(
@@ -309,7 +311,7 @@ class _LoginPageState extends State<LoginPage> {
                   padding: EdgeInsets.all(size.getWidthPx(8)),
                   child: Text(
                     "Zarejestruj się",
-                    style: TextStyle(fontFamily: 'Exo2',color: Colors.white, fontSize: 18.0),
+                    style: TextStyle(fontFamily: 'Exo2',color: Colors.white, fontSize: displayWidth(context) * 0.04),
                   ),
                   color: colorCurveSecondary,
                   onPressed: () => Navigator.pushReplacement(

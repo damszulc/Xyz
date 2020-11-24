@@ -13,6 +13,7 @@ import 'package:flutter_ui_collections/utils/utils.dart';
 
 import '../LocalBindings.dart';
 import 'page_view.dart';
+import '../main.dart';
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
@@ -77,7 +78,7 @@ class _SearchPageState extends State<ObjectsPage> {
         centerTitle: true,
         title: Text("Moje obiekty",
             style:
-            TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+            TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
           actions: <Widget>[
       IconButton(
       padding: EdgeInsets.all(0.0),
@@ -93,7 +94,10 @@ class _SearchPageState extends State<ObjectsPage> {
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
           if(!snapshot.hasData) {
-            return Container(child: Text(registrationDesc), alignment: Alignment.topCenter, padding: EdgeInsets.all(25));
+            return Container(child: Text(registrationDesc, style: TextStyle(fontSize: displayWidth(context) * 0.04),),
+                alignment: Alignment.topCenter,
+                padding: EdgeInsets.all(25),
+                );
           }
 
           return snapshot.hasData
@@ -190,19 +194,19 @@ class PhotosList extends StatelessWidget {
                     text: property.name,
                     leftPadding: size.getWidthPx(8),
                     textColor: colorCurve,
-                    fontSize: 14.0,
+                    fontSize: displayWidth(context) * 0.04,
                     fontWeight: FontWeight.w800),
                 SizedBox(height: size.getWidthPx(4)),
                 leftAlignText(
                     text: property.location,
                     leftPadding: size.getWidthPx(8),
                     textColor: Colors.black54,
-                    fontSize: 12.0),
+                    fontSize: displayWidth(context) * 0.035),
                 leftAlignText(
                     text: property.type,
                     leftPadding: size.getWidthPx(8),
                     textColor: Colors.black54,
-                    fontSize: 12.0),
+                    fontSize: displayWidth(context) * 0.035),
               ],
             ))));
   }

@@ -4,6 +4,7 @@ import 'package:flutter_ui_collections/ui/photo_list.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:flutter_ui_collections/widgets/utils_widget.dart';
 import 'package:flutter_ui_collections/widgets/widgets.dart';
+import '../main.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -21,8 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text("Terminarz",
-            style:
-            TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+            style: TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
         actions: <Widget>[
           IconButton(
             padding: EdgeInsets.all(0.0),

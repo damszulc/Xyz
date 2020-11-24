@@ -21,6 +21,7 @@ import 'page_fault.dart';
 import 'page_control.dart';
 import 'page_webview.dart';
 import 'flutter_notifications.dart';
+import '../main.dart';
 
 Future<Object> getObject(http.Client client, int cid) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
@@ -101,7 +102,7 @@ class _PageComingSoonState extends State<PageSingle> {
           centerTitle: true,
           title: Text("Podgląd obiektu",
               style:
-              TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+              TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
           backgroundColor: colorCurve,
           automaticallyImplyLeading: false,
           leading: new Container(child: BackButton(
@@ -216,8 +217,8 @@ class ObjectInstance extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: <Widget>[
               followersWidget(usterki_key, context, object),
-              nameWidget(object),
-              likeWidget(kontrole_key, object),
+              nameWidget(context, object),
+              likeWidget(context, kontrole_key, object),
             ],
           ),
           Padding(
@@ -251,7 +252,7 @@ class ObjectInstance extends StatelessWidget {
                     child: Text("Usterki",
                         style: TextStyle(
                             fontFamily: "Exo2",
-                            fontSize: 16.0,
+                            fontSize: displayWidth(context) * 0.04,
                             color: colorCurve,
                             fontWeight: FontWeight.w700))
                 ),
@@ -282,7 +283,7 @@ class ObjectInstance extends StatelessWidget {
                     child: Text("Kontrole",
                         style: TextStyle(
                             fontFamily: "Exo2",
-                            fontSize: 16.0,
+                            fontSize: displayWidth(context) * 0.04,
                             color: colorCurveSecondary,
                             fontWeight: FontWeight.w700))
                 ),
@@ -342,7 +343,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(text??"",
             textAlign: TextAlign.left,
             style: TextStyle(
-                fontFamily: 'Exo2',
+                fontFamily: "Exo2",
                 fontSize: fontSize,
                 fontWeight: fontWeight ?? FontWeight.w500,
                 color: textColor)),
@@ -363,7 +364,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Załączniki",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurveSecondary,
         onPressed: () {
@@ -390,7 +391,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Zobacz obiekt",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurveSecondary,
        onPressed: () {
@@ -416,7 +417,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Dodaj usterkę",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurve,
         onPressed: () {
@@ -449,7 +450,7 @@ class ObjectInstance extends StatelessWidget {
         child: Text(
           "Dodaj kontrolę",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurve,
         onPressed: () {
@@ -505,7 +506,7 @@ class ObjectInstance extends StatelessWidget {
   }
 
 
-  Column likeWidget(GlobalKey kontrole_key, Object object) {
+  Column likeWidget(BuildContext context, GlobalKey kontrole_key, Object object) {
     return Column(
       children: <Widget>[
         new FlatButton (
@@ -515,14 +516,14 @@ class ObjectInstance extends StatelessWidget {
                   Text(object.cum.toString(),
                       style: TextStyle(
                           fontFamily: "Exo2",
-                          fontSize: 16.0,
+                          fontSize: displayWidth(context) * 0.06,
                           color: _getColor(object.st),
                           fontWeight: FontWeight.w700)),
                   SizedBox(height: size.getWidthPx(4)),
                   Text("kontroli",
                       style: TextStyle(
                           fontFamily: "Exo2",
-                          fontSize: 14.0,
+                          fontSize: displayWidth(context) * 0.033,
                           color: _getColor(object.st),
                           fontWeight: FontWeight.w500))
                 ]
@@ -533,7 +534,7 @@ class ObjectInstance extends StatelessWidget {
     );
   }
 
-  Column nameWidget(Object object) {
+  Column nameWidget(BuildContext context, Object object) {
     return Column(
       children: <Widget>[
         Container(
@@ -541,7 +542,7 @@ class ObjectInstance extends StatelessWidget {
             child: SizedBox(width: 180, child: Text(object.name,
             style: TextStyle(
                 fontFamily: "Exo2",
-                fontSize: 16.0,
+                fontSize: displayWidth(context) * 0.04,
                 color: colorCurve,
                 fontWeight: FontWeight.w700),
             overflow: TextOverflow.clip, textAlign: TextAlign.center,)
@@ -550,7 +551,7 @@ class ObjectInstance extends StatelessWidget {
         SizedBox(width: 180, child: Text(object.type,
             style: TextStyle(
                 fontFamily: "Exo2",
-                fontSize: 14.0,
+                fontSize: displayWidth(context) * 0.033,
                 color: textSecondary54,
                 fontWeight: FontWeight.w500),
             overflow: TextOverflow.clip,
@@ -569,14 +570,14 @@ class ObjectInstance extends StatelessWidget {
                 Text(object.fum.toString(),
                   style: TextStyle(
                       fontFamily: "Exo2",
-                      fontSize: 16.0,
+                      fontSize: displayWidth(context) * 0.06,
                       color: textSecondary54,
                       fontWeight: FontWeight.w700)),
                 SizedBox(height: size.getWidthPx(4)),
                 Text("usterek",
                     style: TextStyle(
                         fontFamily: "Exo2",
-                        fontSize: 14.0,
+                        fontSize: displayWidth(context) * 0.033,
                         color: textSecondary54,
                         fontWeight: FontWeight.w500))
                 ]
@@ -839,7 +840,7 @@ class FaultsList extends StatelessWidget {
         child: Text(
           "Edytuj",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurveSecondary,
         onPressed: () {
@@ -861,7 +862,7 @@ class FaultsList extends StatelessWidget {
         child: Text(
           "Oznacz jako wykonane",
           style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
         ),
         color: colorCurveSecondary,
         onPressed: () {
@@ -883,7 +884,7 @@ class FaultsList extends StatelessWidget {
             child: Text(
               "Usuń",
               style: TextStyle(
-              fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+              fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
             ),
             color: Colors.red,
             onPressed: () {
@@ -913,11 +914,11 @@ class FaultsList extends StatelessWidget {
                                   text: property.title!=null?property.title:"",
                                   leftPadding: size.getWidthPx(0),
                                   textColor: _getColor(property.state, DateTime.parse(property.remove_date)),
-                                  fontSize: 14.0,
+                                  fontSize: displayWidth(context) * 0.033,
                                   fontWeight: FontWeight.w500)),
                                   SizedBox(height: size.getWidthPx(8)),
                                   Row(children: <Widget> [
-                                    Text('Data usunięcia: '+(property.remove_date!="0000-00-00 00:00:00"?property.remove_date:'-brak-'), textAlign: TextAlign.left,)])])
+                                    Text('Data usunięcia: '+(property.remove_date!="0000-00-00 00:00:00"?property.remove_date:'-brak-'), textAlign: TextAlign.left, style: TextStyle(fontSize: displayWidth(context) * 0.033, fontFamily: "Exo2"))])])
                         ),
                   expanded: Padding(padding: EdgeInsets.all(10),
                       child: Column(children: <Widget>[
@@ -925,28 +926,28 @@ class FaultsList extends StatelessWidget {
                             text: property.description,
                             leftPadding: size.getWidthPx(0),
                             textColor: Colors.black,
-                            fontSize: 14.0,
+                            fontSize: displayWidth(context) * 0.033,
                             fontWeight: FontWeight.w500),
                         SizedBox(height: size.getWidthPx(8)),
                         leftAlignText(
                             text: 'Data ostatniej modyfikacji: '+property.date,
                             leftPadding: size.getWidthPx(0),
                             textColor: Colors.black,
-                            fontSize: 14.0,
+                            fontSize: displayWidth(context) * 0.033,
                             fontWeight: FontWeight.w500),
                         SizedBox(height: size.getWidthPx(4)),
                         leftAlignText(
                             text: 'Status usterki: '+property.state,
                             leftPadding: size.getWidthPx(0),
                             textColor: Colors.black,
-                            fontSize: 14.0,
+                            fontSize: displayWidth(context) * 0.033,
                             fontWeight: FontWeight.w500),
                         SizedBox(height: size.getWidthPx(4)),
                         leftAlignText(
                             text: 'Osoba odpowiedzialna: '+(property.responsible!=""?property.responsible:'-brak-'),
                             leftPadding: size.getWidthPx(0),
                             textColor: Colors.black,
-                            fontSize: 14.0,
+                            fontSize: displayWidth(context) * 0.033,
                             fontWeight: FontWeight.w500),
                         SizedBox(height: size.getWidthPx(4)),
                         Container(
@@ -1161,11 +1162,11 @@ class ControlsList extends StatelessWidget {
                               text: property.name!=null?property.name:"",
                               leftPadding: size.getWidthPx(0),
                               textColor: _getColor(property.priority),
-                              fontSize: 14.0,
+                              fontSize: displayWidth(context) * 0.033,
                               fontWeight: FontWeight.w500)),
                           SizedBox(height: size.getWidthPx(8)),
                       Row(children: <Widget> [
-                        Text('Data kontroli:'+property.date, textAlign: TextAlign.left,)])
+                        Text('Data kontroli:'+property.date, textAlign: TextAlign.left, style: TextStyle(fontSize: displayWidth(context) * 0.033, fontFamily: "Exo2"))])
                     ]),
                   ),
                   expanded: Padding(padding: EdgeInsets.all(10),
@@ -1173,13 +1174,13 @@ class ControlsList extends StatelessWidget {
                       leftAlignText(text: property.description,
                           leftPadding: size.getWidthPx(0),
                       textColor: Colors.black,
-                      fontSize: 14.0,
+                      fontSize: displayWidth(context) * 0.033,
                       fontWeight: FontWeight.w500),
                         SizedBox(height: size.getWidthPx(8)),
                         leftAlignText(text: 'Osoba odpowiedzialna: '+(property.responsible!=""?property.responsible:'-brak-'),
                             leftPadding: size.getWidthPx(0),
                             textColor: Colors.black,
-                            fontSize: 14.0,
+                            fontSize: displayWidth(context) * 0.033,
                             fontWeight: FontWeight.w500),
                       ])),
                 ),

@@ -16,6 +16,7 @@ import 'package:url_launcher/url_launcher.dart';
 
 import '../LocalBindings.dart';
 import 'page_single.dart';
+import '../main.dart';
 
 class PageFault extends StatefulWidget {
   @override
@@ -54,7 +55,7 @@ class _PageFaultState extends State<PageFault> {
         centerTitle: true,
         title: Text((_titleFieldController.text==''?"Dodaj usterkę":"Edytuj usterkę"),
             style:
-            TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+            TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
         leading: new Container(child: BackButton(
           color: Colors.white, onPressed: () {
           Navigator.push(
@@ -80,7 +81,7 @@ class _PageFaultState extends State<PageFault> {
             save_fault(int.parse(widget.fault_id), _mySelection, _nameFieldController.text, dropdownValue, _titleFieldController.text, true);
           }
         },
-        label: Text('Zapisz'),
+        label: Text('Zapisz', style: TextStyle(fontSize: displayWidth(context) * 0.033, fontFamily: "Exo2")),
         icon: Icon(Icons.save),
         backgroundColor: colorCurve,
       ),
@@ -120,30 +121,8 @@ class _PageFaultState extends State<PageFault> {
                       side: BorderSide(color: Colors.grey)),
                   elevation: 0,
                   onPressed: () {
-                    _selectDate(context);   /*
-                    DatePicker.showDatePicker(
-                      context,
-                      minDateTime: DateTime.now(),
-                      initialDateTime: DateTime.now(),
-                      locale: DATETIME_PICKER_LOCALE_DEFAULT,
-                      pickerMode: DateTimePickerMode.date,
-                      pickerTheme: DateTimePickerTheme.Default,
-                      onConfirm: (date, List<int> index) {
-                        _remove_date = '${date.day}.${date.month}.${date.year}';
-                        setState(() {});
-                      },
-                    );*/
-                   /* DatePicker.showDatePicker(context,
-                        theme: DatePickerTheme(
-                          containerHeight: 210.0,
-                        ),
-                        showTitleActions: true,
-                        minTime: DateTime.now(), onConfirm: (date) {
-                          _remove_date = '${date.day}.${date.month}.${date.year}';
-                          setState(() {});
-                        },
-                        currentTime: DateTime.now(), locale: LocaleType.pl);
-                 */ },
+                    _selectDate(context);
+                    },
                   child: Container(
                     alignment: Alignment.center,
                     height: 50.0,
@@ -160,7 +139,8 @@ class _PageFaultState extends State<PageFault> {
                                     style: TextStyle(
                                         color: Colors.black54,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 16.0),
+                                        fontFamily: "Exo2",
+                                        fontSize: displayWidth(context) * 0.04),
                                   ),
                                 ],
                               ),
@@ -197,7 +177,7 @@ class _PageFaultState extends State<PageFault> {
                       child: Center(child: Text(
                         'Dodaj zdjęcie',
                         style: TextStyle(
-                            fontFamily: 'Exo2', color: Colors.white, fontSize: 14.0),
+                            fontFamily: 'Exo2', color: Colors.white, fontSize: displayWidth(context) * 0.033),
                       )),
                       color: colorCurveSecondary,
 
@@ -264,8 +244,10 @@ class _PageFaultState extends State<PageFault> {
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: 'Tytuł',
+          labelStyle: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")
         ),
-        obscureText: false
+        obscureText: false,
+        style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")
     );
   }
 
@@ -277,8 +259,10 @@ class _PageFaultState extends State<PageFault> {
         decoration: InputDecoration(
           border: OutlineInputBorder(),
           labelText: 'Opis',
+          labelStyle: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2"),
         ),
-        obscureText: false
+        obscureText: false,
+        style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")
     );
   }
 
@@ -294,11 +278,11 @@ class _PageFaultState extends State<PageFault> {
         child: DropdownButtonHideUnderline(
             child: DropdownButton<String>(
                 isExpanded: true,
-                hint: new Text("Status usterki"),
+                hint: new Text("Status usterki", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 14,
                 elevation: 5,
-                style: TextStyle(color: Colors.black, fontSize: 16.0),
+                style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
                 onChanged: (String newValue) {
                   setState(() {
                     stateValue = newValue;
@@ -309,7 +293,7 @@ class _PageFaultState extends State<PageFault> {
                     .map<DropdownMenuItem<String>>((String value) {
                   return DropdownMenuItem<String>(
                     value: value,
-                    child: Text(value),
+                    child: Text(value, style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
                   );
                 }).toList())));
   }
@@ -326,11 +310,11 @@ class _PageFaultState extends State<PageFault> {
         child: DropdownButtonHideUnderline(
         child: DropdownButton<String>(
         isExpanded: true,
-        hint: new Text("Ważność usterki"),
+        hint: new Text("Ważność usterki", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
         icon: Icon(Icons.arrow_downward),
         iconSize: 14,
         elevation: 5,
-        style: TextStyle(color: Colors.black, fontSize: 16.0),
+        style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
   onChanged: (String newValue) {
   setState(() {
   dropdownValue = newValue;
@@ -341,7 +325,7 @@ class _PageFaultState extends State<PageFault> {
       .map<DropdownMenuItem<String>>((String value) {
   return DropdownMenuItem<String>(
   value: value,
-  child: Text(value),
+  child: Text(value, style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
   );
   }).toList())));
   }
@@ -362,11 +346,11 @@ class _PageFaultState extends State<PageFault> {
           child: DropdownButtonHideUnderline(
               child: DropdownButton(
                 isExpanded: true,
-                hint: new Text("Protokół"),
+                hint: new Text("Protokół", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
                 icon: Icon(Icons.arrow_downward),
                 iconSize: 14,
                 elevation: 5,
-                style: TextStyle(color: Colors.black, fontSize: 16.0),
+                style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
                 items: data.map((item) {
                   return new DropdownMenuItem(
                     child: new Text(item['filename']),
@@ -397,11 +381,11 @@ class _PageFaultState extends State<PageFault> {
         child: DropdownButtonHideUnderline(
             child: DropdownButton(
               isExpanded: true,
-              hint: new Text("Osoba odpowiedzialna"),
+              hint: new Text("Osoba odpowiedzialna", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
               icon: Icon(Icons.arrow_downward),
               iconSize: 14,
               elevation: 5,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
               items: responsibles.map((item) {
                 return new DropdownMenuItem(
                   child: new Text(item['name']),

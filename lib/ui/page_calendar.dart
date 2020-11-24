@@ -11,6 +11,7 @@ import 'package:http/http.dart' as http;
 import '../LocalBindings.dart';
 import 'page_home.dart';
 import 'page_signup.dart';
+import '../main.dart';
 
 
 class CalendarPage extends StatefulWidget {
@@ -48,7 +49,7 @@ class _CalendarPageState extends State<CalendarPage> {
           centerTitle: true,
           title: Text("Terminarz",
               style:
-              TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+              TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
           backgroundColor: colorCurve,
           actions: <Widget>[
             IconButton(
@@ -207,7 +208,7 @@ class ControlsList extends StatelessWidget {
                           fontWeight: FontWeight.w500)),
                       SizedBox(height: size.getWidthPx(8)),
                             Row(children: <Widget> [
-                              Text(property.date, textAlign: TextAlign.left,)]),
+                              Text(property.date, textAlign: TextAlign.left, style: TextStyle(fontSize: displayWidth(context) * 0.04))]),
                     ]),
                   ),
                   expanded: Padding(padding: EdgeInsets.all(10),

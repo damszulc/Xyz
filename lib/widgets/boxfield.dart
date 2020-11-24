@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
+import '../main.dart';
 
 class BoxField extends StatefulWidget {
   final TextEditingController controller;
@@ -129,7 +130,7 @@ class _BoxFieldState extends State<BoxField> {
                     borderRadius:  BorderRadius.circular(8.0)),
                 child:  TextFormField(
                   key: widget.key,
-                  style: TextStyle(fontFamily: 'Exo2'),
+                  style: TextStyle(fontFamily: 'Exo2', fontSize: displayWidth(context) * 0.037),
                   obscureText: widget.obscureText,
                   controller: widget.controller,
                   onSaved: widget.onSaved,

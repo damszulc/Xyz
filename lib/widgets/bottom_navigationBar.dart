@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
+import '../main.dart';
 
 class BottomNavBar extends StatefulWidget {
   final ValueChanged<int> changeCurrentTab;
@@ -27,7 +28,8 @@ class _BottomNavBarState extends State<BottomNavBar>
       unselectedItemColor: Colors.black45,
       selectedItemColor: colorCurve,
       elevation: 150.0,
-      selectedFontSize: 15.0,
+      unselectedFontSize: displayWidth(context) * 0.033,
+      selectedFontSize: displayWidth(context) * 0.037,
       showUnselectedLabels: true,
       onTap: (int index) {
         setState(() {

@@ -1,7 +1,8 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:flutter_ui_collections/widgets/widgets.dart';
-
+import '../main.dart';
 
 class TileRow extends StatelessWidget {
 
@@ -59,11 +60,12 @@ class TileRow extends StatelessWidget {
                   Expanded(
                     flex: 1,
                     child: Padding(
-                      padding: EdgeInsets.all(size.getWidthPx(8)),
+                      padding: EdgeInsets.symmetric(vertical: size.getWidthPx(8), horizontal: size.getWidthPx(12)),
                       child: Text(label,
                           style: TextStyle(
                               fontFamily: 'Exo2',
-                              fontSize: 14.0,
+                              fontWeight: FontWeight.w500,
+                              fontSize: displayWidth(context) * 0.033,
                               color: disabled
                                   ? disabledTextColour
                                   : labelColor ?? textPrimaryDarkColor
@@ -85,11 +87,14 @@ class TileRow extends StatelessWidget {
                             flex: 1,
                             child: Container(
                               alignment: Alignment.centerRight,
+                              padding: EdgeInsets.only(
+                                  right: size.getWidthPx(12), left: size.getWidthPx(12)),
                               child: Text(rowValue,
                                   overflow: TextOverflow.ellipsis,
                                   style: TextStyle(
                                       fontFamily: 'Exo2',
-                                      fontSize: 15.0,
+                                      fontWeight: FontWeight.w500,
+                                      fontSize: displayWidth(context) * 0.033,
                                       color: disabled
                                           ? disabledTextColour
                                           : labelColor ?? textPrimaryDarkColor

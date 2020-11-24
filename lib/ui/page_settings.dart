@@ -11,6 +11,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import '../LocalBindings.dart';
+import '../main.dart';
 
 class SettingPage extends StatefulWidget {
   @override
@@ -42,7 +43,7 @@ class _SettingPageState extends State<SettingPage> {
         centerTitle: true,
         title: Text("Ustawienia",
             style:
-                TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+                TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
         backgroundColor: colorCurve,
           actions: <Widget>[
             IconButton(
@@ -68,7 +69,7 @@ class _SettingPageState extends State<SettingPage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text('wersja: 1.4.14', textAlign: TextAlign.center,)),
+                  child: Text('wersja: 1.4.17', textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.03))),
                 accountSection(),
                 pushNotificationSection(),
                 pushCalendarSection(),
@@ -84,7 +85,7 @@ class _SettingPageState extends State<SettingPage> {
   SettingSection getHelpSection() {
     return SettingSection(
       headerText: "\nPomoc".toUpperCase(),
-      headerFontSize: 15.0,
+      headerFontSize: displayWidth(context) * 0.037,
       headerTextColor: Colors.black87,
       backgroundColor: Colors.white,
       disableDivider: false,
@@ -129,7 +130,7 @@ class _SettingPageState extends State<SettingPage> {
   SettingSection accountSection() {
     return SettingSection(
       headerText: "\nKonto".toUpperCase(),
-      headerFontSize: 15.0,
+      headerFontSize: displayWidth(context) * 0.037,
       headerTextColor: Colors.black87,
       backgroundColor: Colors.white,
       disableDivider: false,
@@ -151,7 +152,7 @@ class _SettingPageState extends State<SettingPage> {
   SettingSection pushNotificationSection() {
     return SettingSection(
       headerText: "\nPowiadomienia".toUpperCase(),
-      headerFontSize: 15.0,
+      headerFontSize: displayWidth(context) * 0.037,
       headerTextColor: Colors.black87,
       backgroundColor: Colors.white,
       disableDivider: false,
@@ -195,7 +196,7 @@ class _SettingPageState extends State<SettingPage> {
   SettingSection pushCalendarSection() {
     return SettingSection(
       headerText: "\nTerminarz".toUpperCase(),
-      headerFontSize: 15.0,
+      headerFontSize: displayWidth(context) * 0.037,
       headerTextColor: Colors.black87,
       backgroundColor: Colors.white,
       disableDivider: false,

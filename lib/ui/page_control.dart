@@ -4,6 +4,7 @@ import 'dart:async';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/LocalBindings.dart';
+import 'package:flutter_ui_collections/main.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
 import 'package:flutter_ui_collections/ui/page_responsible.dart';
 
@@ -41,7 +42,7 @@ class _PageControlState extends State<PageControl> {
         centerTitle: true,
         title: Text("Dodaj kontrolę",
             style:
-            TextStyle(fontFamily: "Exo2", color: backgroundColor)),
+            TextStyle(fontFamily: "Exo2", color: backgroundColor, fontSize: displayWidth(context) * 0.05)),
         leading: new Container(child: BackButton(
           color: Colors.white, onPressed: () {
           Navigator.push(
@@ -107,8 +108,9 @@ class _PageControlState extends State<PageControl> {
                      focusNode: _nameFocusNode,
                      decoration: InputDecoration(
                       border: OutlineInputBorder(),
-                      labelText: 'Nazwa',
+                      labelText: 'Nazwa', labelStyle: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")
                     ),
+                  style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2"),
                   obscureText: false),
                 SizedBox(
                   height: 20.0,
@@ -141,7 +143,7 @@ class _PageControlState extends State<PageControl> {
                                     style: TextStyle(
                                         color: Colors.black54,
                                         fontWeight: FontWeight.normal,
-                                        fontSize: 16.0),
+                                        fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2"),
                                   ),
                                 ],
                               ),
@@ -218,7 +220,9 @@ class _PageControlState extends State<PageControl> {
       decoration: InputDecoration(
         border: OutlineInputBorder(),
         labelText: 'Opis',
+        labelStyle: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")
       ),
+      style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2"),
       obscureText: false);
   }
 
@@ -279,11 +283,11 @@ class _PageControlState extends State<PageControl> {
           child: DropdownButtonHideUnderline(
           child: DropdownButton(
             isExpanded: true,
-            hint: new Text("Wybierz z listy"),
+            hint: new Text("Wybierz z listy", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
       icon: Icon(Icons.arrow_downward),
       iconSize: 14,
       elevation: 5,
-      style: TextStyle(color: Colors.black, fontSize: 16.0),
+      style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
       items: data.map((item) {
         return new DropdownMenuItem(
           child: new Text(item['value']),
@@ -332,11 +336,11 @@ class _PageControlState extends State<PageControl> {
         child: DropdownButtonHideUnderline(
             child: DropdownButton(
               isExpanded: true,
-              hint: new Text("Osoba odpowiedzialna"),
+              hint: new Text("Osoba odpowiedzialna", style: TextStyle(fontSize: displayWidth(context) * 0.04, fontFamily: "Exo2")),
               icon: Icon(Icons.arrow_downward),
               iconSize: 14,
               elevation: 5,
-              style: TextStyle(color: Colors.black, fontSize: 16.0),
+              style: TextStyle(color: Colors.black, fontSize: displayWidth(context) * 0.04),
               items: responsibles.map((item) {
                 return new DropdownMenuItem(
                   child: new Text(item['name']),
