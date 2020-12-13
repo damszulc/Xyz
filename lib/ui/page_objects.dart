@@ -194,19 +194,19 @@ class PhotosList extends StatelessWidget {
                     text: property.name,
                     leftPadding: size.getWidthPx(8),
                     textColor: colorCurve,
-                    fontSize: displayWidth(context) * 0.04,
+                    fontSize: displayWidth(context) * 0.037,
                     fontWeight: FontWeight.w800),
                 SizedBox(height: size.getWidthPx(4)),
                 leftAlignText(
                     text: property.location,
                     leftPadding: size.getWidthPx(8),
                     textColor: Colors.black54,
-                    fontSize: displayWidth(context) * 0.035),
+                    fontSize: displayWidth(context) * 0.032),
                 leftAlignText(
                     text: property.type,
                     leftPadding: size.getWidthPx(8),
                     textColor: Colors.black54,
-                    fontSize: displayWidth(context) * 0.035),
+                    fontSize: displayWidth(context) * 0.032),
               ],
             ))));
   }
