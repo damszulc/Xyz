@@ -136,14 +136,20 @@ class ControlsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     size = Screen(MediaQuery.of(context).size);
-    return SizedBox( height: MediaQuery.of(context).size.height, child: Container( child: ListView.builder(
-      shrinkWrap: true,
-      physics: ScrollPhysics(),
-      itemCount: controls.length,
-      itemBuilder: (context, index) {
-        return propertyCard(context, controls[index]);
-      },
-    )));
+    if(controls.length>0) {
+      return SizedBox(height: MediaQuery
+          .of(context)
+          .size
+          .height, child: Container(child: ListView.builder(
+        shrinkWrap: true,
+        physics: ScrollPhysics(),
+        itemCount: controls.length,
+        itemBuilder: (context, index) {
+          return propertyCard(context, controls[index]);
+        },
+      )));
+    }
+    else return Center(child: Text("Nie masz żadnych nadchodzących usterek i/lub kontroli."));
   }
 
 
