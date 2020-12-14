@@ -95,7 +95,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
           actions: <Widget>[
             Padding(
               padding: EdgeInsets.symmetric(
-            vertical: size.getWidthPx(20), horizontal: size.getWidthPx(16)),
+            vertical: size.getWidthPx(10), horizontal: size.getWidthPx(16)),
               child: RaisedButton(
                 elevation: 8.0,
                 child: Text(
