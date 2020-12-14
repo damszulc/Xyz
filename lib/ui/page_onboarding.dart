@@ -7,6 +7,7 @@ import 'package:flutter_ui_collections/utils/utils.dart';
 import '../LocalBindings.dart';
 import 'intro_page.dart';
 import 'page_objects.dart';
+import "../main.dart";
 
 class OnBoardingPage extends StatefulWidget {
   OnBoardingPage({Key key}) : super(key: key);
@@ -93,7 +94,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               )),
           actions: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: size.getWidthPx(16), right:  size.getWidthPx(12), bottom: size.getWidthPx(12)),
+              padding: EdgeInsets.only(top: displayWidth(context) * 0.01, right:  displayWidth(context) * 0.035, bottom: displayWidth(context) * 0.035),
               child: RaisedButton(
                 child: Text(
                   isLastPage ? 'STARTUJEMY' : 'DALEJ',
