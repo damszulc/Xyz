@@ -94,8 +94,10 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
               )),
           actions: <Widget>[
             Padding(
-              padding: EdgeInsets.only(top: displayWidth(context) * 0.01, right:  displayWidth(context) * 0.035, bottom: displayWidth(context) * 0.035),
+              padding: EdgeInsets.symmetric(
+            vertical: size.getWidthPx(20), horizontal: size.getWidthPx(16)),
               child: RaisedButton(
+                elevation: 8.0,
                 child: Text(
                   isLastPage ? 'STARTUJEMY' : 'DALEJ',
                   style: TextStyle(fontFamily: 'Exo2',fontWeight: FontWeight.w500,fontSize: 14,color: Colors.grey.shade700),
