@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_ui_collections/ui/page_objects.dart';
 import 'package:flutter_ui_collections/ui/page_login.dart';
@@ -46,6 +47,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
             children: <Widget>[
               pageViewFillWidget(),
               appBarWithButton(isLastPage, context),
+              appButton(isLastPage, context),
               bottomDotsWidget()
             ],
           ),
@@ -92,10 +94,18 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                       curve: Curves.easeOut);
                 },
               )),
-          actions: <Widget>[
-            Padding(
-              padding: EdgeInsets.symmetric(
-            vertical: size.getWidthPx(10), horizontal: size.getWidthPx(16)),
+        ),
+      ),
+    );
+  }
+
+  Positioned appButton(bool isLastPage, BuildContext context) {
+    return Positioned(
+      top: 0,
+    right: 0,
+    child: Container(
+              margin: EdgeInsets.symmetric(
+                  vertical: size.getWidthPx(20), horizontal: size.getWidthPx(16)),
               child: RaisedButton(
                 elevation: 8.0,
                 child: Text(
@@ -125,11 +135,7 @@ class _OnBoardingPageState extends State<OnBoardingPage> {
                 shape: new RoundedRectangleBorder(
                     borderRadius: new BorderRadius.circular(30.0)),
               ),
-            )
-          ],
-        ),
-      ),
-    );
+            ));
   }
 
   Positioned pageViewFillWidget() {
