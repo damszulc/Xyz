@@ -557,8 +557,8 @@ class AttachmentsList extends StatelessWidget {
             shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
             borderOnForeground: true,
             child: Container(
-                height: size.getWidthPx(170),
-                width: size.getWidthPx(170),
+                height: size.getWidthPx(180),
+                width: size.getWidthPx(180),
                 padding: EdgeInsets.only(top: size.getWidthPx(10)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -567,7 +567,7 @@ class AttachmentsList extends StatelessWidget {
                     ClipRRect(
                         child:  new Image(image: AssetImage("assets/folder-blue.png"), height: size.getWidthPx(32))),
                     SizedBox(height: size.getWidthPx(5)),
-                    Center(child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.04))),
+                    Center(child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.033))),
                   ],
                 ))));
   }
