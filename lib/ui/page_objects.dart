@@ -93,15 +93,9 @@ class _SearchPageState extends State<ObjectsPage> {
         future: fetchPhotos(http.Client()),
         builder: (context, snapshot) {
           if (snapshot.hasError) print(snapshot.error);
-          if(!snapshot.hasData) {
-            return Container(child: Text(registrationDesc, style: TextStyle(fontSize: displayWidth(context) * 0.04),),
-                alignment: Alignment.topCenter,
-                padding: EdgeInsets.all(25),
-                );
-          }
 
           return snapshot.hasData
-              ? PhotosList(photos: snapshot.data)
+              ? PhotosList(photos: snapshot.data, registrationDesc: registrationDesc)
               : Center(child: CircularProgressIndicator());
         },
       ),
@@ -128,24 +122,33 @@ class _SearchPageState extends State<ObjectsPage> {
 class PhotosList extends StatelessWidget {
   Screen size;
   final List<Photo> photos;
+  final String registrationDesc;
 
-  PhotosList({Key key, this.photos}) : super(key: key);
+  PhotosList({Key key, this.photos, this.registrationDesc}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     size = Screen(MediaQuery.of(context).size);
-    return GridView.builder(
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 2,
-      ),
-      itemCount: photos.length,
-      itemBuilder: (context, index) {
-        return propertyCard(context, photos[index]);
+    if(photos.length > 0) {
+      return GridView.builder(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2,
+        ),
+        itemCount: photos.length,
+        itemBuilder: (context, index) {
+          return propertyCard(context, photos[index]);
 
-        //return ;
-        return Image.network(photos[index].image);
-      },
-    );
+          //return ;
+          return Image.network(photos[index].image);
+        },
+      );
+    }
+    else {
+      return Container(child: Text(registrationDesc, style: TextStyle(fontSize: displayWidth(context) * 0.04),),
+        alignment: Alignment.topCenter,
+        padding: EdgeInsets.all(25),
+      );
+    }
   }
 
   Center appLogo = new Center(
