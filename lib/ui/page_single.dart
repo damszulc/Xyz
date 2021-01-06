@@ -395,7 +395,8 @@ class ObjectInstance extends StatelessWidget {
         ),
         color: colorCurveSecondary,
        onPressed: () {
-          String url = 'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component';
+          String url = 'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&device=android&tmpl=component';
+          print(url);
           Navigator.pushReplacement(
          context,
          MaterialPageRoute(builder: (context) => PageWebview(url)),

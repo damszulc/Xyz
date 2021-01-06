@@ -574,7 +574,7 @@ class AttachmentsList extends StatelessWidget {
 
   InkWell propertyCard(BuildContext context, Attachment property) {
     return InkWell(
-        onTap: (){ launch('https://wkob.srv28629.microhost.com.pl/uploads/'+property.link); },
+        onTap: (){ launch(property.link); },
         child: Card(
             elevation: 4.0,
             margin: EdgeInsets.all(8),
@@ -600,6 +600,7 @@ class AttachmentsList extends StatelessWidget {
 
   isImage(link) {
     if(link.indexOf('.jpg')!=-1 || link.indexOf('.jpeg')!=-1 || link.indexOf('.png')!=-1) {
+      print(link);
       return NetworkImage(link);
     }
     else return AssetImage('assets/file.png');

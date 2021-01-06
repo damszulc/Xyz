@@ -8,7 +8,6 @@ import 'package:flutter_ui_collections/ui/page_webview.dart';
 import 'package:flutter_ui_collections/utils/utils.dart';
 import 'package:flutter_ui_collections/widgets/widgets.dart';
 import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 import '../LocalBindings.dart';
 import '../main.dart';
@@ -69,7 +68,7 @@ class _SettingPageState extends State<SettingPage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text('wersja: 1.4.24', textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.03))),
+                  child: Text('wersja: 1.5 | '+MediaQuery.of(context).size.width.round().toString()+'x'+MediaQuery.of(context).size.height.round().toString()+'px', textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.03))),
                 accountSection(),
                 pushNotificationSection(),
                 pushCalendarSection(),
