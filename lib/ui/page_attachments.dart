@@ -488,16 +488,18 @@ class Attachment {
   final int id;
   final String name;
   final String link;
+  final String link_thumb;
   final int is_dir;
   final int cid;
 
-  Attachment({this.id, this.name, this.link, this.is_dir, this.cid});
+  Attachment({this.id, this.name, this.link, this.link_thumb, this.is_dir, this.cid});
 
   factory Attachment.fromJson(Map<String, dynamic> json) {
     return Attachment(
         id: int.parse(json['id']) as int,
         name: json['name'] as String,
         link: json['link'] as String,
+        link_thumb: json['link_thumb'] as String,
         is_dir: int.parse(json['is_dir']) as int,
         cid: int.parse(json['cid']) as int
     );
@@ -590,7 +592,7 @@ class AttachmentsList extends StatelessWidget {
                     Tooltip(
                       message: property.name,
                       child: ClipRRect(
-                        child: new Image(image: isImage(property.link), height: size.getWidthPx(32)))
+                        child: new Image(image: isImage(property.link_thumb), height: size.getWidthPx(32)))
                     ),
                     SizedBox(height: size.getWidthPx(5)),
                     Center(child: Padding(padding: EdgeInsets.all(5.0), child: Text(property.name, textScaleFactor: 0.8, textAlign: TextAlign.center,overflow: TextOverflow.ellipsis, style: TextStyle(fontSize: displayWidth(context) * 0.04)))),
@@ -600,7 +602,6 @@ class AttachmentsList extends StatelessWidget {
 
   isImage(link) {
     if(link.indexOf('.jpg')!=-1 || link.indexOf('.jpeg')!=-1 || link.indexOf('.png')!=-1) {
-      print(link);
       return NetworkImage(link);
     }
     else return AssetImage('assets/file.png');

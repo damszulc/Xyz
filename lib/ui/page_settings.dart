@@ -11,6 +11,7 @@ import 'package:flutter_webview_plugin/flutter_webview_plugin.dart';
 import 'package:http/http.dart' as http;
 import '../LocalBindings.dart';
 import '../main.dart';
+import 'dart:io' show Platform;
 
 class SettingPage extends StatefulWidget {
   @override
@@ -95,7 +96,7 @@ class _SettingPageState extends State<SettingPage> {
             disableDivider: false,
               onTap: () => Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/kontakt?tmpl=component')))
+                  MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/kontakt?tmpl=component&device=android':'https://wkob.pl/index.php/kontakt?tmpl=component')))
           ),
         ),
         Container(
@@ -104,7 +105,7 @@ class _SettingPageState extends State<SettingPage> {
             disableDivider: false,
             onTap: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/regulamin?tmpl=component')))
+                MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/regulamin?tmpl=component&device=android':'https://wkob.pl/index.php/regulamin?tmpl=component')))
                           ,
           ),
         ),

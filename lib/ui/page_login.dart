@@ -14,6 +14,7 @@ import 'page_home.dart';
 import 'page_signup.dart';
 import '../main.dart';
 
+import 'dart:io' show Platform;
 
 class LoginPage extends StatefulWidget {
   @override
@@ -285,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                     onTap: ()  => Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'))),
+                        MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component&device=android':'https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'))),
                     child: Padding(
                       padding: EdgeInsets.only(right: size.getWidthPx(24)),
                       child: Align(
@@ -316,7 +317,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: colorCurveSecondary,
                   onPressed: () => Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => PageWebview('https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'))),
+                      MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component&device=android':'https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'))),
                 )),
 
               ],

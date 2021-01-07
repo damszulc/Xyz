@@ -23,6 +23,8 @@ import 'page_webview.dart';
 import 'flutter_notifications.dart';
 import '../main.dart';
 
+import 'dart:io' show Platform;
+
 Future<Object> getObject(http.Client client, int cid) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
 
@@ -378,7 +380,6 @@ class ObjectInstance extends StatelessWidget {
   }
 
   Container buttonWidget(context, object, parent_id) {
-    print('https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component');
     return Container(
       padding: EdgeInsets.symmetric(
           vertical: size.getWidthPx(0), horizontal: size.getWidthPx(12)),
@@ -395,7 +396,7 @@ class ObjectInstance extends StatelessWidget {
         ),
         color: colorCurveSecondary,
        onPressed: () {
-          String url = 'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&device=android&tmpl=component';
+          String url = (Platform.isAndroid)?'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component&device=android':'https://wkob.pl/index.php?option=com_kob&layout=single&cid='+object.id.toString()+'&mobile_code='+object.access_code+'&tmpl=component';
           print(url);
           Navigator.pushReplacement(
          context,
