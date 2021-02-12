@@ -210,7 +210,7 @@ class _PageAttachmentState extends State<PageAttachment> {
       "parent_id": parent_id,
       "value" : field
     };
-    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_attachment&format=raw", body: json.encode(data)).then((result) {
+    http.post("https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_attachment&format=raw", body: json.encode(data)).then((result) {
       print(result.body);
       setStatus(result.statusCode == 200 ? result.body : "Error");
     }).catchError((error) {

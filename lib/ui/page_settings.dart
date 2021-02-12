@@ -69,7 +69,7 @@ class _SettingPageState extends State<SettingPage> {
               children: <Widget>[
                 Padding(
                   padding: EdgeInsets.only(top: 20),
-                  child: Text('wersja: 1.5 | '+MediaQuery.of(context).size.width.round().toString()+'x'+MediaQuery.of(context).size.height.round().toString()+'px', textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.03))),
+                  child: Text('wersja: 1.5.3 | '+MediaQuery.of(context).size.width.round().toString()+'x'+MediaQuery.of(context).size.height.round().toString()+'px', textAlign: TextAlign.center, style: TextStyle(fontSize: displayWidth(context) * 0.03))),
                 accountSection(),
                 pushNotificationSection(),
                 pushCalendarSection(),
@@ -96,7 +96,7 @@ class _SettingPageState extends State<SettingPage> {
             disableDivider: false,
               onTap: () => Navigator.pushReplacement(
                   context,
-                  MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/kontakt?tmpl=component&device=android':'https://wkob.pl/index.php/kontakt?tmpl=component')))
+                  MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://ekob.pl/index.php/kontakt?tmpl=component&device=android':'https://ekob.pl/index.php/kontakt?tmpl=component')))
           ),
         ),
         Container(
@@ -105,7 +105,7 @@ class _SettingPageState extends State<SettingPage> {
             disableDivider: false,
             onTap: () => Navigator.pushReplacement(
                 context,
-                MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/regulamin?tmpl=component&device=android':'https://wkob.pl/index.php/regulamin?tmpl=component')))
+                MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://ekob.pl/index.php/regulamin?tmpl=component&device=android':'https://ekob.pl/index.php/regulamin?tmpl=component')))
                           ,
           ),
         ),
@@ -240,7 +240,7 @@ class _SettingPageState extends State<SettingPage> {
   _getUserData() async {
     String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
     http.post(
-        "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_user_data&format=raw",
+        "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_user_data&format=raw",
         body: {
           "user_id": user_id
         }).then((result) {
@@ -267,7 +267,7 @@ class _SettingPageState extends State<SettingPage> {
   _setSettings(name, value) async {
     String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
     http.post(
-        "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=set_settings&format=raw",
+        "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=set_settings&format=raw",
         body: {
           "user_id": user_id,
           "name": name.toString(),

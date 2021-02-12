@@ -98,7 +98,7 @@ class _CalendarPageState extends State<CalendarPage> {
 
 Future<List<Control>> fetchControls(http.Client client) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_calendar&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_calendar&format=raw';
   var data = {'user_id': user_id};
 
   final response = await http.post(url, body: json.encode(data));

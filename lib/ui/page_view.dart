@@ -17,7 +17,7 @@ class PageViewDemo extends StatefulWidget {
 
 class _PageViewDemoState extends State<PageViewDemo> {
 
-  final String url = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw";
+  final String url = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw";
   List data = List(); //edited line
   List pages = List();
   PageController _controller;

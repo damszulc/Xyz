@@ -112,7 +112,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
     String user_id = await LocalStorage.sharedInstance.readValue(
         Constants.isLoggedIn);
     http.post(
-        "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_notifications&format=raw",
+        "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_notifications&format=raw",
         body: {
           "user_id": user_id
         }).then((result) {

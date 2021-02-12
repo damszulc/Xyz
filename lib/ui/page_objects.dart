@@ -17,7 +17,7 @@ import '../main.dart';
 
 Future<List<Photo>> fetchPhotos(http.Client client) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw';
   var data = {'user_id': user_id};
 
   // Starting Web API Call.
@@ -103,7 +103,7 @@ class _SearchPageState extends State<ObjectsPage> {
   }
 
   _getRegistrationDesc() async {
-    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_registration_desc&format=raw").then((result) {
+    http.post("https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_registration_desc&format=raw").then((result) {
       registrationDesc = result.body.toString();
       setState(() {
       });
@@ -153,7 +153,7 @@ class PhotosList extends StatelessWidget {
 
   Center appLogo = new Center(
       child: Image(
-          image: new NetworkImage("https://wkob.pl/images/logo.png"),
+          image: new NetworkImage("https://ekob.pl/images/logo.png"),
           alignment: FractionalOffset.center));
 
   Padding leftAlignText({text, leftPadding, textColor, fontSize, fontWeight}) {

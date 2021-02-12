@@ -25,7 +25,7 @@ import 'flutter_notifications.dart';
 Future<Object> getObject(http.Client client, int cid) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
 
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_single&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_single&format=raw';
   var data = {'user_id': user_id, 'cid': cid};
 
   // Starting Web API Call.
@@ -300,7 +300,7 @@ class ObjectInstance extends StatelessWidget {
         color: colorCurve,
         onPressed: () {
           http.post(
-              "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_empty_fault&format=raw",
+              "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_empty_fault&format=raw",
               body: {
                 "cid": object.id.toString()
               }).then((result) {
@@ -333,7 +333,7 @@ class ObjectInstance extends StatelessWidget {
         color: colorCurve,
         onPressed: () {
           http.post(
-              "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_empty_control&format=raw",
+              "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_empty_control&format=raw",
               body: {
                 "cid": object.id.toString()
               }).then((result) {
@@ -468,7 +468,7 @@ class ObjectInstance extends StatelessWidget {
 
 Future<List<Attachment>> fetchAttachments(http.Client client, int cid, int parent_id) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_attachments&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_attachments&format=raw';
   var data = {'user_id': user_id, 'cid' : cid, 'parent_id': parent_id};
 
   // Starting Web API Call.
@@ -612,7 +612,7 @@ class AttachmentsList extends StatelessWidget {
 
 Future<List<Fault>> fetchFaults(http.Client client, int cid) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_faults&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_faults&format=raw';
   var data = {'user_id': user_id, 'cid' : cid};
 
   final response = await http.post(url, body: json.encode(data));
@@ -770,7 +770,7 @@ class FaultsList extends StatelessWidget {
 
 Future<List<Control>> fetchControls(http.Client client, int cid) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_controls&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_controls&format=raw';
   var data = {'user_id': user_id, 'cid' : cid};
 
   final response = await http.post(url, body: json.encode(data));
@@ -900,7 +900,7 @@ class ControlsList extends StatelessWidget {
 }
 
 Future<List<Photo>> fetchPhotos(http.Client client, int fault_id) async {
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_photos&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_photos&format=raw';
   var data = {'fault_id' : fault_id};
 
   final response = await http.post(url, body: json.encode(data));

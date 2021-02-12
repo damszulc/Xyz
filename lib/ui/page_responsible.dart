@@ -50,7 +50,7 @@ class _PageResponsibleState extends State<PageResponsible> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             http.post(
-                "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_responsible&format=raw",
+                "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_responsible&format=raw",
                 body: json.encode({
                   "cid": widget.id.toString(),
                   "control_id": widget.control_id.toString(),
@@ -301,7 +301,7 @@ class _PageResponsibleState extends State<PageResponsible> {
       "photo" : photo
     };
     print(data);
-    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data)).then((result) {
+    http.post("https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data)).then((result) {
       print(result.body);
       setStatus(result.statusCode == 200 ? result.body : "Error");
     }).catchError((error) {
@@ -338,7 +338,7 @@ class _PageResponsibleState extends State<PageResponsible> {
     );
   }
 
-  final String url = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_responsible_type&format=raw";
+  final String url = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_responsible_type&format=raw";
   List data = List(); //edited line
 
   Future<String> getProtocols(int cid) async {

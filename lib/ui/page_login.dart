@@ -42,7 +42,7 @@ class _LoginPageState extends State<LoginPage> {
     String password = _passwordController.text;
 
     // SERVER LOGIN API URL
-    var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=login&format=raw';
+    var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=login&format=raw';
 
     // Store all data with Param Name.
     var data = {'login': email, 'password' : password};
@@ -66,7 +66,7 @@ class _LoginPageState extends State<LoginPage> {
       LocalStorage.sharedInstance.writeValue(key:Constants.isLoggedIn, value: user_id);
 
       http.post(
-          "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_group&format=raw",
+          "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_group&format=raw",
           body: {
             "user_id": user_id
           }).then((result) {
@@ -286,7 +286,7 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                     onTap: ()  => Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component&device=android':'https://wkob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'))),
+                        MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://ekob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component&device=android':'https://ekob.pl/index.php/component/users/?view=reset&Itemid=539&tmpl=component'))),
                     child: Padding(
                       padding: EdgeInsets.only(right: size.getWidthPx(24)),
                       child: Align(
@@ -317,7 +317,7 @@ class _LoginPageState extends State<LoginPage> {
                   color: colorCurveSecondary,
                   onPressed: () => Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component&device=android':'https://wkob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'))),
+                      MaterialPageRoute(builder: (context) => PageWebview((Platform.isAndroid)?'https://ekob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component&device=android':'https://ekob.pl/index.php/component/users/?view=registration&Itemid=539&tmpl=component'))),
                 )),
 
               ],

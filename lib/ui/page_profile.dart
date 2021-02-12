@@ -26,7 +26,7 @@ class _ProfilePageState extends State<ProfilePage> {
         actions: <Widget>[
           IconButton(
             padding: EdgeInsets.all(0.0),
-            icon: Image.network('https://wkob.pl/images/logo.png'),
+            icon: Image.network('https://ekob.pl/images/logo.png'),
             iconSize: 100,
             alignment: Alignment(-1.0, -1.0),
 

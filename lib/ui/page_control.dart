@@ -66,7 +66,7 @@ class _PageControlState extends State<PageControl> {
         onPressed: () {
           if (_formKey.currentState.validate()) {
             http.post(
-                "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_and_publish_control&format=raw",
+                "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_and_publish_control&format=raw",
                 body: json.encode({
                   "cid": widget.id.toString(),
                   "id": widget.control_id.toString(),
@@ -299,7 +299,7 @@ class _PageControlState extends State<PageControl> {
         setState(() {
           _mySelection = newVal;
           http.post(
-              "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_control_by_id&format=raw",
+              "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_control_by_id&format=raw",
               body: {
                 "id": newVal
               }).then((result) {
@@ -457,7 +457,7 @@ class _PageControlState extends State<PageControl> {
       "photo" : photo
     };
     print(data);
-    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data)).then((result) {
+    http.post("https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data)).then((result) {
       print(result.body);
       setStatus(result.statusCode == 200 ? result.body : "Error");
     }).catchError((error) {
@@ -494,7 +494,7 @@ class _PageControlState extends State<PageControl> {
     );
   }
 
-  final String url = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_controls_type&format=raw";
+  final String url = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_controls_type&format=raw";
   List data = List(); //edited line
 
   Future<String> getProtocols(int cid) async {
@@ -511,7 +511,7 @@ class _PageControlState extends State<PageControl> {
     return "Success";
   }
 
-  final String urlres = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_reponsibles&format=raw";
+  final String urlres = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_reponsibles&format=raw";
   List responsibles = List(); //edited line
 
   Future<String> getResponsibles(int cid) async {
@@ -536,7 +536,7 @@ class _PageControlState extends State<PageControl> {
 
 Future<List<Responsible>> fetchResponsibles(http.Client client, int cid, String control_id) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_responsibles&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_responsibles&format=raw';
   var data = {'user_id': user_id, 'cid' : cid, 'control_id' : control_id};
 
   final response = await http.post(url, body: json.encode(data));

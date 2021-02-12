@@ -218,7 +218,7 @@ class _PageFaultState extends State<PageFault> {
   getFault() {
     print("+++++++++++++++++++++++++++++++++++++++++++++++++");
     http.post(
-        "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_fault_by_id&format=raw",
+        "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_fault_by_id&format=raw",
         body: {
           "id": widget.fault_id
         }).then((result) {
@@ -498,7 +498,7 @@ class _PageFaultState extends State<PageFault> {
       "title" : title
     };
 
-    http.post("https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data))
+    http.post("https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault&format=raw", body: json.encode(data))
         .then((result) {
       setStatus(result.statusCode == 200 ? result.body : "Error");
       if(redirect == true) {
@@ -518,7 +518,7 @@ class _PageFaultState extends State<PageFault> {
       "photo": photo
     };
     http.post(
-        "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault_photo&format=raw",
+        "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=save_fault_photo&format=raw",
         body: json.encode(data)).then((result) {
       setStatus(result.statusCode == 200 ? result.body : "Error");
     }).catchError((error) {
@@ -558,7 +558,7 @@ class _PageFaultState extends State<PageFault> {
     );
   }
 
-  final String url = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_protocols&format=raw";
+  final String url = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_protocols&format=raw";
   List data = List(); //edited line
 
   Future<String> getProtocols(int cid) async {
@@ -572,7 +572,7 @@ class _PageFaultState extends State<PageFault> {
     return "Success";
   }
 
-  final String urlres = "https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_reponsibles&format=raw";
+  final String urlres = "https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_reponsibles&format=raw";
   List responsibles = List(); //edited line
 
   Future<String> getResponsibles(int cid) async {
@@ -596,7 +596,7 @@ class _PageFaultState extends State<PageFault> {
 
 Future<List<Photo>> fetchPhotos(http.Client client, int fault_id) async {
   String user_id = await LocalStorage.sharedInstance.readValue(Constants.isLoggedIn);
-  var url = 'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_photos&format=raw';
+  var url = 'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_photos&format=raw';
   var data = {'user_id': user_id, 'fault_id' : fault_id};
 
   final response = await http.post(url, body: json.encode(data));

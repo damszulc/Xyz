@@ -33,7 +33,7 @@ class WebServices {
   void getListOfPhotos(BuildContext context) async {
     if (await Utils.checkConnection()) {
       http.get(
-        'https://wkob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw',
+        'https://ekob.pl/index.php?option=com_ajax&plugin=mobileapp&action=get_objects&format=raw',
       ).then((http.Response response) {
         final String res = response.body;
         final int statusCode = response.statusCode;
